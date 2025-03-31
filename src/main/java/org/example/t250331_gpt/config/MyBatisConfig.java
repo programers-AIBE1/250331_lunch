@@ -17,7 +17,7 @@ public class MyBatisConfig {
 
     @Bean
     public DataSource dataSource() {
-        Dotenv dotenv = Dotenv.load();
+        Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName(dotenv.get("MYSQL_DRIVER"));
         ds.setUrl(dotenv.get("MYSQL_URL"));
